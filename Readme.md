@@ -1,5 +1,5 @@
 
-## Prerequisitesgit switch -c Readme origin/Readmegit switch -c Readme origin/Readme
+## Prerequisitesgit switch 
 Make sure you have the following installed:
 
 - Python **3.10 or higher**

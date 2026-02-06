@@ -1,10 +1,10 @@
+from typing import List
 from fastapi import APIRouter, HTTPException
 from app.schemas.items_schemas import Item
-from app.services.items_service import list_items, create_item, get_item_by_id, update_item, delete_item
-
+from app.services.items_services import list_items, create_item, get_item_by_id, update_item, delete_item
 router = APIRouter(prefix="/items", tags=["items"])
 
-@router.get("/", response_model=List[Item])
+@router.get("/", response_model= List[Item])
 def get_items():
     return list_items()
 

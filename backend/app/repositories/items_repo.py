@@ -1,9 +1,15 @@
 import pandas as pd
+from typing import List, Dict, Any
 
-# Load all data from the CSV
-def load_all():
-    return pd.read_csv("backend/app/data/food_delivery.csv")
+DATA_PATH = "backend/app/data/food_delivery.csv"
 
-# Save data back to the CSV file
-def save_all(dataframe):
-    dataframe.to_csv("backend/app/data/food_delivery.csv", index=False)
+def load_all() -> List[Dict[str, Any]]:
+    try:
+        data = pd.read_csv(DATA_PATH)
+        return data.to_dict(orient='records')  # Convert DataFrame to list of dictionaries
+    except FileNotFoundError:
+        return []
+
+def save_all(items: List[Dict[str, Any]]) -> None:
+    df = pd.DataFrame(items)
+    df.to_csv(DATA_PATH, index=False)
